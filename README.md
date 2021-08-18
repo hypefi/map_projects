@@ -10,3 +10,6 @@ It can be used by other organizations, to organize their actions and plans and m
 
 maybe SQLite in the database
 
+- maybe it is a map of layers of places you can find to sit down and relax in a given city, shaded space, green spaces, parks, skateparks, place where to play basketball, placee where to find shade, place where to find running 
+
+
