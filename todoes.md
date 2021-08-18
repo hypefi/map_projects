@@ -1,0 +1,3 @@
+- tiles not loading 
+- adding buttons to edit the map ==> editing the map adds stuff on it, saving button sends to database,
+- adding database to store the editing
