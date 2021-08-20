@@ -1,64 +1,80 @@
- var mymap = L.map('mapid',{drawControl: true}).setView([33.9715904,-6.8498129], 13);
+var map = L.map("mapid", { drawControl: true }).setView(
+  [33.9715904, -6.8498129],
+  13
+);
 
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+L.tileLayer(
+  "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+  {
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+    attribution:
+      'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox/streets-v11',
+    id: "mapbox/streets-v11",
     tileSize: 512,
-    zoomOffset: -1
-  }).addTo(mymap);
+    zoomOffset: -1,
+  }
+).addTo(map);
 
-   setTimeout(function () {
-   window.dispatchEvent(new Event('resize'));
-   }, 100);
+setTimeout(function () {
+  window.dispatchEvent(new Event("resize"));
+}, 100);
 
-   // FeatureGroup is to store editable layers
-     var drawnItems = new L.FeatureGroup();
-     map.addLayer(drawnItems);
-     var drawControl = new L.Control.Draw({
-         edit: {
-             featureGroup: drawnItems
-         }
-     });
-     map.addControl(drawControl);
+// Initialise the FeatureGroup to store editable layers
+var editableLayers = new L.FeatureGroup();
+map.addLayer(editableLayers);
 
-     var modifiedDraw = L.drawLocal.extend({
-         draw: {
-             toolbar: {
-                 buttons: {
-                     polygon: 'Draw an awesome polygon'
-                 }
-             }
-         }
-     });
+var drawPluginOptions = {
+  position: 'topright',
+  draw: {
+    polygon: {
+      allowIntersection: false, // Restricts shapes to simple polygons
+      drawError: {
+        color: '#e1e100', // Color the shape will turn when intersects
+        message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+      },
+      shapeOptions: {
+        color: '#97009c'
+      }
+    },
+    // disable toolbar item by setting it to false
+    polyline: false,
+    circle: false, // Turns off this drawing tool
+    rectangle: false,
+    marker: false,
+    },
+  edit: {
+    featureGroup: editableLayers, //REQUIRED!!
+    remove: false
+  }
+};
 
-     var toolbar = L.Toolbar();
-      toolbar.addToolbar(map);
-/*
-  L.marker([51.5, -0.09]).addTo(mymap)
-    .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+// Initialise the draw control and pass it the FeatureGroup of editable layers
+var drawControl = new L.Control.Draw(drawPluginOptions);
+map.addControl(drawControl);
 
-  L.circle([51.508, -0.11], 500, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5
-  }).addTo(mymap).bindPopup("I am a circle.");
+var editableLayers = new L.FeatureGroup();
+map.addLayer(editableLayers);
 
-  L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
-  ]).addTo(mymap).bindPopup("I am a polygon.");
-*/
+map.on('draw:created', function(e) {
+  var type = e.layerType,
+    layer = e.layer;
 
-  var popup = L.popup();
-
-  function onMapClick(e) {
-    popup
-      .setLatLng(e.latlng)
-      .setContent("You clicked the map at " + e.latlng.toString())
-      .openOn(mymap);
+  if (type === 'marker') {
+    layer.bindPopup('A popup!');
   }
 
-  mymap.on('click', onMapClick);
+  editableLayers.addLayer(layer);
+});
+
+
+var popup = L.popup();
+
+function onMapClick(e) {
+  popup
+    .setLatLng(e.latlng)
+    .setContent("You clicked the map at " + e.latlng.toString())
+    .openOn(map);
+}
+
+map.on("click", onMapClick);
