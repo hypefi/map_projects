@@ -70,6 +70,14 @@ map.on("draw:created", function (e) {
 var shapes = getShapes(editableLayers);
 
 console.log(shapes);
+
+  var geoshap = shapes.toGeoJSON()
+  var shape_for_db = JSON.stringify(geoshap);
+
+//here send to db
+
+
+
 });
 
 var popup = L.popup();
