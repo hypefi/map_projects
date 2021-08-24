@@ -79,6 +79,13 @@ var shapes = getShapes(editableLayers);
 //here send to db
 console.log(shape_for_db);
 
+var request = new XMLHttpRequest();
+var path = "http://localhost:3003"; // enter your server ip and port number
+request.open("POST", path, true); // true = asynchronous
+request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+var text= '{"member_nm":"' + txtName.value + '","member_type":"' + txtMembershipType.value + '"}';
+request.send ( text );
+
 
 });
 
