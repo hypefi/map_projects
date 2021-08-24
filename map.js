@@ -71,13 +71,13 @@ map.on("draw:created", function (e) {
 
 var shapes = getShapes(editableLayers);
 
-console.log(shapes);
+//console.log(shapes);
 
-  var geoshap = shapes.toGeoJSON()
+  var geoshap = editableLayers.toGeoJSON()
   var shape_for_db = JSON.stringify(geoshap);
 
 //here send to db
-
+console.log(shape_for_db);
 
 
 });
@@ -123,7 +123,7 @@ var getShapes = function(drawnItems) {
 };
 
 //
-//functions to handle map daata and mouseover 
+//functions to handle map data and mouseover 
 //
 
 function handleFeature(feature, layer) {
