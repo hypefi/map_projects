@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/geojson', (req, res) => {
   // you have address available in req.body:
   
-  console.log(req.body.address);
+  console.log(req.body);
   
   // always send a response:
   res.json({ ok: true });
