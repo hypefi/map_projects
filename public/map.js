@@ -73,7 +73,7 @@ var shapes = getShapes(editableLayers);
 
 //console.log(shapes);
 
-  var geoshap = editableLayers.toGeoJSON()
+  var geoshap = layer.toGeoJSON()
   var shape_for_db = JSON.stringify(geoshap);
 
 //here send to db
