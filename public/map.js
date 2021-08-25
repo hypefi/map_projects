@@ -80,10 +80,11 @@ var shapes = getShapes(editableLayers);
 console.log(shape_for_db);
 
 var request = new XMLHttpRequest();
-var path = "http://localhost:3003"; // enter your server ip and port number
+var path = "http://localhost:3003/geojson"; // enter your server ip and port number
 request.open("POST", path, true); // true = asynchronous
 request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-var text= '{"member_nm":"' + txtName.value + '","member_type":"' + txtMembershipType.value + '"}';
+//var text= '{"member_nm":"' + txtName.value + '","member_type":"' + txtMembershipType.value + '"}';
+var text = shape_for_db;
 request.send ( text );
 
 
