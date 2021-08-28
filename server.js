@@ -28,7 +28,8 @@ var Json = mongoose.model('JString', JsonSchema, 'layercollection');
 ///////
 //APP//
 ///////
-
+var swig = require('swig');
+var cons = require('consolidate');
 
 const dir = path.join(__dirname, 'public');
 
@@ -42,7 +43,7 @@ app.use(express.json());
 
 
 app.use('/', indexRouter);
-
+/*
 app.use(function(req, res, next){
 next(createError(404));
 });
@@ -50,7 +51,7 @@ next(createError(404));
 //error handler
 //
 //
-/*app.use(function(err, req, res, next){
+app.use(function(err, req, res, next){
 //set locals, only providing error in development environment
 //
 res.locals.message = err.message;
@@ -75,6 +76,12 @@ app.post('/geojson', (req, res) => {
 });
 
 app.use(express.static(dir));
+
+
+// view engine setup
+app.engine('html', cons.swig)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 
 app.listen(3003, () => console.log('Listening on http://localhost:3003/'));
 
