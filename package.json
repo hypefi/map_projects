@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/hypefi/map_projects#readme",
   "dependencies": {
-    "pm2": "^5.1.0"
+    "consolidate": "^0.16.0",
+    "pm2": "^5.1.0",
+    "twig": "^1.15.4"
   }
 }
