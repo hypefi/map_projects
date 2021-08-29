@@ -2,7 +2,7 @@
   "name": "map-cgm",
   "version": "1.0.0",
   "description": "this project is about building the map that stores planting projects and actions done by CGM :",
-  "main": "map.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

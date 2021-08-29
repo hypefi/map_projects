@@ -1,29 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var path = require('path');
-
 var indexRouter = require('./routes/index');
-
-
-
-//db connect requirements 
-
-var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/map", { useNewUrlParser: true }, function (error) {
-    if (error) {
-        console.log(error);
-    }
-});
-
-var JsonSchema = new mongoose.Schema({
-    name: String,
-    type: mongoose.Schema.Types.Mixed
-});
- 
-// Mongoose Model definition
-var Json = mongoose.model('JString', JsonSchema, 'layercollection');
-
 
 ///////
 //APP//
