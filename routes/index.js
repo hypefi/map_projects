@@ -21,9 +21,10 @@ var JsonSchema = new mongoose.Schema({
 var Json = mongoose.model('JString', JsonSchema, 'layercollection');
 
 
+
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index.html', { title: 'Express' });
 });
 
 
@@ -47,7 +48,7 @@ router.get('/maplayers', function (req, res) {
 /* GET Map page. */
 router.get('/map', function(req,res) {
     Json.find({},{}, function(e,docs){
-        res.render('map', {
+        res.render('map.pug', {
             "jmap" : docs,
             lat : 40.78854,
             lng : -73.96374
