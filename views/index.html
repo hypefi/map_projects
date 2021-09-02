@@ -9,6 +9,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
  <!-- Make sure you put this AFTER Leaflet's CSS -->
 
+ <link rel="stylesheet", href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+ <link rel="stylesheet", href="/stylesheets/style.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
  <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,6 +29,7 @@
   <div id="mapid" leaflet
    (leafletMapReady)="onMapReady($event)">
     <script src="map.js"></script>
+   <script src="layers.js"></script>
  </div> 
  <div class="container">
     <div class="jumbotron">

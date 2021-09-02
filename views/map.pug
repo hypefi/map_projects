@@ -17,7 +17,8 @@ block content
         
         $.getJSON('/maplayers',function(result){
             $.each(result, function(i, mlayer){
-                $.getJSON('/mapjson/' + mlayer.name, function(data) { addLayer(data, mlayer.name ) });
+                  console.log($.getJSON('/mapjson/' + mlayer.name, function(data) { addLayer(data, mlayer.name ) }));
+                  $.getJSON('/mapjson/' + mlayer.name, function(data) { addLayer(data, mlayer.name ) });
             });
         });
 
