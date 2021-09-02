@@ -4,6 +4,8 @@
 - request adding name to polygon after being added ==> 
 - saving button sends to database
 - adding database to store the editing ==> we shall send only the laast layer polygon to the database ? or send all layers ? or only layers edited  by user. 
+- getting back park layers from database 
+
 
 Features: 
 - feature : request adding data, to park ( populate data about park)

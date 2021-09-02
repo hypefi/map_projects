@@ -56,4 +56,19 @@ router.get('/map', function(req,res) {
     });
 });
 
+
+router.post('/geojson', (req, res) => {
+// you have address available in req.body:
+  console.log(req.body);
+  console.log(req.body.geometry.coordinates);
+  //Send to DB
+  
+
+  //Always send a response:
+  res.json({ ok: true });
+});
+
+
+
+
 module.exports = router;
