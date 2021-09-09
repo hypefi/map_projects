@@ -29,9 +29,12 @@ router.get('/', function(req, res) {
 
 
 /* GET json data. */
+/* GET json data in function of geometry.type field */
+
 router.get('/mapjson/:name', function (req, res) {
+    console.log(req.params.name);
     if (req.params.name) {
-        Json.findOne({ name: req.params.name },{}, function (err, docs) {
+        Json.findOne({ "geometry.type": req.params.name },{}, function (err, docs) {
             res.json(docs);
         });
     }
@@ -45,6 +48,12 @@ router.get('/maplayers', function (req, res) {
     });
 });
 
+
+router.get('/maplay', function (req, res) {
+    Json.find({}, function (err, docs) {
+        res.json(docs);
+    });
+});
 /* GET Map page. */
 router.get('/map', function(req,res) {
     Json.find({},{}, function(e,docs){

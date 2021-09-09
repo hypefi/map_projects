@@ -3,13 +3,26 @@
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);*/
 
-        $.getJSON('/maplayers',function(result){
+        $.getJSON('/maplay',function(result){
             $.each(result, function(i, mlayer){
-                  console.log($.getJSON('/mapjson/' + mlayer.name, function(data) { addLayer(data, mlayer.name ) }));
-                  $.getJSON('/mapjson/' + mlayer.name, function(data) { addLayer(data, mlayer.name ) });
-            });
+                  console.log("mlayer", mlayer);
+                  if(mlayer.geometry == 'undefined'){
+                  return 
+                  }else{
+                  
+                  console.log($.getJSON('/mapjson/' + mlayer.geometry.type, function(data) { addLayer(data, mlayer.geometry.type ) }));
+                  $.getJSON('/mapjson/' + mlayer.geometry.type, function(data) { addLayer(data, mlayer.geometry.type ) });
+           }});
         });
 
+
+
+function addLayer(layer, name){
+var leaf_layer;
+leaf_layer = L.geoJson(layer);
+leaf_layer.addTo(map);
+}
+/*
         function addLayer(layer, name) {
             var leaf_layer;
             if (layer.type == "MultiPoint") {
@@ -42,3 +55,4 @@
                 }
             });
         }
+        */
