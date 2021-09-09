@@ -4,7 +4,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 //db connect requirements
-
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/map", { useNewUrlParser: true }, function (error) {
     if (error) {
@@ -13,8 +12,9 @@ mongoose.connect("mongodb://localhost:27017/map", { useNewUrlParser: true }, fun
 });
 
 var JsonSchema = new mongoose.Schema({
-    name: String,
-    type: mongoose.Schema.Types.Mixed
+    type: String,
+    properties: mongoose.Schema.Types.Mixed,
+    geometry: mongoose.Schema.Types.Mixed
 });
 
 // Mongoose Model definition
@@ -62,12 +62,23 @@ router.post('/geojson', (req, res) => {
   console.log(req.body);
   console.log(req.body.geometry.coordinates);
   //Send to DB
-  
+  console.log(req.body.geometry.type);
+
+  var park = new Json();
+  park.type = req.body.type;
+  park.properties = req.body.properties;
+  park.geometry = req.body.geometry;
+
+console.log(park);
+  park.save( function(err, docs){
+  //Json.create({name: req.body.type, properties: req.body.properties, geometry: req.body.geometry.type }, function(err, docs){
+ // console.log("park created");
+  if (err) return handleError(err);
+  }); 
 
   //Always send a response:
   res.json({ ok: true });
 });
-
 
 
 

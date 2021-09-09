@@ -2,7 +2,7 @@
 - adding buttons to edit the map ==> editing the map adds stuff on it, OK 
 - get properties from polygons that are drawns ==> OK 
 - request adding name to polygon after being added ==> 
-- saving button sends to database
+- saving button sends to database => need to insert properly into db, into the right collection with the right collection name
 - adding database to store the editing ==> we shall send only the laast layer polygon to the database ? or send all layers ? or only layers edited  by user. 
 - getting back park layers from database 
 
