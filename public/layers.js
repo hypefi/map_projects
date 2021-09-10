@@ -16,7 +16,9 @@ function addLayer(layer, name){
 var leaf_layer;
 console.log(layer);
 leaf_layer = L.geoJson(layer);
+leaf_layer.bindPopup(layer.properties.name);
 leaf_layer.addTo(map);
+
 }
 /*
         function addLayer(layer, name) {
