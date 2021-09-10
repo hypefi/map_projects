@@ -6,19 +6,15 @@
         $.getJSON('/maplay',function(result){
             $.each(result, function(i, mlayer){
                   console.log("mlayer", mlayer);
-                  if(mlayer.geometry == 'undefined'){
-                  return 
-                  }else{
-                  
-                  console.log($.getJSON('/mapjson/' + mlayer.geometry.type, function(data) { addLayer(data, mlayer.geometry.type ) }));
-                  $.getJSON('/mapjson/' + mlayer.geometry.type, function(data) { addLayer(data, mlayer.geometry.type ) });
-           }});
+                addLayer(mlayer);
+           });
         });
 
 
 
 function addLayer(layer, name){
 var leaf_layer;
+console.log(layer);
 leaf_layer = L.geoJson(layer);
 leaf_layer.addTo(map);
 }

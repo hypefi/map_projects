@@ -4,7 +4,7 @@
 - request adding name to polygon after being added ==> 
 - saving button sends to database => need to insert properly into db, into the right collection with the right collection name
 - adding database to store the editing ==> we shall send only the laast layer polygon to the database ? or send all layers ? or only layers edited  by user. 
-- getting back park layers from database 
+- getting back park layers from database ==> ok for one, need to check the jquery request in public/layers.js getjson maybe it gets only the first item of all and iterate on it
 
 
 Features: 
