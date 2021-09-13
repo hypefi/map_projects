@@ -99,7 +99,7 @@ function onMapClick(e) {
     .openOn(map);
 }
 
-map.on("click", onMapClick);
+//map.on("click", onMapClick);
 
 //getshapes function 
 //
