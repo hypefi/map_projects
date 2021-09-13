@@ -75,10 +75,10 @@ router.post('/geojson', (req, res) => {
 
   var park = new Json();
   park.type = req.body.type;
-  park.properties = req.body.properties;
+  park.properties = { name : "New Park"};
   park.geometry = req.body.geometry;
 
-console.log(park);
+  console.log("park",park);
   park.save( function(err, docs){
   //Json.create({name: req.body.type, properties: req.body.properties, geometry: req.body.geometry.type }, function(err, docs){
  // console.log("park created");

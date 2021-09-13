@@ -8,7 +8,12 @@
 
 
 Features: 
-- feature : request adding data, to park ( populate data about park)
+- feature : request adding data, to park ( populate data about park), possibility to update data
 - feature : Make a left slide window that adds filters to the maps data
 - feature : Make a GardenList/ParkLIst database a la nomad list independent page rating parks in the city
 - feature : adding sign up / login buttons to edit map with email confirmation ==> only confirmed people can add parks, can only add or update 5 parks / day to avoid spam
+- feature : search
+
+do not forget to add property in layer park creation
+
+and add try catch error in park acquisition from DB
