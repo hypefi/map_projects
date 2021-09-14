@@ -5,8 +5,35 @@
 - saving button sends to database => need to insert properly into db, into the right collection with the right collection name ===> insert on finish now OK
 - adding database to store the editing ==> we shall send only the last layer polygon to the database ? or send all layers ? or only layers edited  by user. ==> OK 
 - getting back park layers from database ==> OK 
+- populating data about the Park ==> OK 
+- Possibility to update data from the map of every Park
+- adding data on layer creation, open popup after layer creation.
+- Custom style Popup ()
+- Adding Login for possibility of adding data on map
 
-
+- Park layer fields :
+    = greenery /5
+    = Shade /5
+    = Trees /5 
+    = Noise/Calmness /5
+    = Space /5
+    = Crowd on weekend /5
+    = Safe /5
+    Amenities : 
+    = Wifi available yes/no
+    = Kids Playground
+    = Skatepark
+    = Outdoor training Space
+    = Football fields
+    = BasketBall Fields
+    = Body of water nearby
+    = Drinkable water available
+    = Running 
+    = Picnic friendly
+    = Van emplacement
+    = Nearest food store
+    = Nearest cell tower
+     
 Features: 
 - feature : request adding data, to park ( populate data about park), possibility to update data
 - feature : Make a left slide window that adds filters to the maps data

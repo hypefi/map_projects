@@ -65,7 +65,7 @@ map.on("draw:created", function (e) {
   if (type === "marker") {
     layer.bindPopup("A popup!");
   }
-
+    layer.bindPopup();
 
   editableLayers.addLayer(layer);
 
