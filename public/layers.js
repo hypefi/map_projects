@@ -1,20 +1,4 @@
-// Pop up template 
 
-var template = '<form id="popup-form">\
-  <label for="input-speed">New speed:</label>\
-  <input id="input-speed" class="popup-input" type="number" />\
-  <table class="popup-table">\
-    <tr class="popup-table-row">\
-      <th class="popup-table-header">Park name:</th>\
-      <td id="value-name" class="popup-table-data"></td>\
-    </tr>\
-    <tr class="popup-table-row">\
-      <th class="popup-table-header">Shade available:</th>\
-      <td id="value-shade" class="popup-table-data"></td>\
-    </tr>\
-  </table>\
-  <button id="button-submit" type="button">Save Changes</button>\
-</form>';
 
 $.getJSON('/maplay',function(result){
     $.each(result, function(i, mlayer){
