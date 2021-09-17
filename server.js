@@ -10,7 +10,6 @@ var swig = require('swig');
 var cons = require('consolidate');
 
 const dir = path.join(__dirname, 'public');
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -69,5 +68,8 @@ app.set('view engine', 'html');
 app.set('view engine', 'pug');
 
 app.listen(3003, () => console.log('Listening on http://localhost:3003/'));
+
+
+
 
 module.exports = app;

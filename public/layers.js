@@ -1,9 +1,6 @@
-
-
 $.getJSON('/maplay',function(result){
     $.each(result, function(i, mlayer){
         console.log("mlayer", mlayer);
-            
         addLayer(mlayer);
         //populate layer with properties Data
    });
@@ -14,13 +11,13 @@ var leaf_layer;
 console.log(layer);
 leaf_layer = L.geoJson(layer, {
       onEachFeature: function (feature, layer) {
-        layer.on('click', layerClickHandler);
+        layer.bindPopup('<h1>'+feature.properties.name+'</h1>');
+        layer.on({click: layerClickHandler, mouseover: mouseoverfunction});
       }
     });
 
 //leaf_layer.bindPopup(layer.roperties.name);
 //console.log(layer.properties.name);
-
 //leaf_layer.bindPopup(template);
 leaf_layer.addTo(map);
 // value name does not exist until the popup is opened ie the layer is clicked 
@@ -28,27 +25,38 @@ leaf_layer.addTo(map);
 }
 
 // extend click on layer to showpopup function + add populating html template 
+// on closing popup you may lose data, on reopning again the popup is not populated?? why does console log show data
+//
 function layerClickHandler (e) {
-
+  console.log(e);
   var marker = e.target,
       properties = e.target.feature.properties;
-
-  console.log("marker", marker);
-  if (marker.hasOwnProperty('_popup')) {
-    marker.unbindPopup();
-    console.log("yes")
-  }
-
-  marker.bindPopup(template);
+  
   marker.openPopup();
-  console.log(L.DomUtil.get('value-name'));
-  console.log(properties.name);
-  L.DomUtil.get('value-name').textContent = properties.name;
- // L.DomUtil.get('value-shade').textContent = properties.shade;
+
+//  console.log("marker", marker.getPopup());
+//  if (marker.hasOwnProperty('_popup')) {
+//   marker.unbindPopup();
+//   console.log("unbindpopup")
+//  marker.closePopup();
+//  }
+//  //console.log("popupisnotopen")
+//  marker.bindPopup(template);
+//  marker.openPopup();
+//  console.log(L.DomUtil.get('value-name'));
+//  console.log(properties.name);
+//  L.DomUtil.get('value-name').textContent = properties.name;
+// // L.DomUtil.get('value-shade').textContent = properties.shade;
+//  console.log(L.DomUtil.get('value-name'));
+  
 
 }
 
+function mouseoverfunction(){
+console.log("mouseover")
+}
 
+// needs to onclick on map close Popup and maybe unBindpopup 
 
 
 
