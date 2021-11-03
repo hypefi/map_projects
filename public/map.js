@@ -105,16 +105,18 @@ map.on("draw:created", function (e) {
   //var text= '{"member_nm":"' + txtName.value + '","member_type":"' + txtMembershipType.value + '"}';
   var text = shape_for_db;
   request.send(text);
+
+  location.reload(); //reload in order to have ability to show pop up on new created layer may be done in another way
 });
 
 var popup = L.popup();
 
 function onMapClick(e) {
- if($(e.originalEvent.path[0]).attr('id') == 'mapid') map.closePopup();
-/* popup
-    .setLatLng(e.latlng)
-    .setContent("You clicked the map at " + e.latlng.toString())
-    .openOn(map);*/
+  if ($(e.originalEvent.path[0]).attr('id') == 'mapid') map.closePopup();
+  /* popup
+      .setLatLng(e.latlng)
+      .setContent("You clicked the map at " + e.latlng.toString())
+      .openOn(map);*/
 }
 
 map.on("click", onMapClick);

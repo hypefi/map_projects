@@ -11,7 +11,7 @@ var leaf_layer;
 console.log(layer);
 leaf_layer = L.geoJson(layer, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h1>'+feature.properties.name+'</h1>');
+        layer.bindPopup('<h1>'+feature.properties.name+'</h1>'+'<button>'+'update'+'</button>'+'<button>'+'save'+'</button>' );
         layer.on({click: layerClickHandler, mouseover: mouseoverfunction});
       }
     });
@@ -31,66 +31,16 @@ function layerClickHandler (e) {
   console.log(e);
   var marker = e.target,
       properties = e.target.feature.properties;
-  
   marker.openPopup();
-
-//  console.log("marker", marker.getPopup());
 //  if (marker.hasOwnProperty('_popup')) {
 //   marker.unbindPopup();
-//   console.log("unbindpopup")
 //  marker.closePopup();
 //  }
-//  //console.log("popupisnotopen")
 //  marker.bindPopup(template);
 //  marker.openPopup();
-//  console.log(L.DomUtil.get('value-name'));
-//  console.log(properties.name);
 //  L.DomUtil.get('value-name').textContent = properties.name;
-// // L.DomUtil.get('value-shade').textContent = properties.shade;
-//  console.log(L.DomUtil.get('value-name'));
-  
-
 }
 
 function mouseoverfunction(){
-console.log("mouseover")
 }
 
-// needs to onclick on map close Popup and maybe unBindpopup 
-
-
-
-/*
-        function addLayer(layer, name) {
-            var leaf_layer;
-            if (layer.type == "MultiPoint") {
-                leaf_layer = L.geoJson(layer, { pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, layer.style); }})
-                leaf_layer.bindPopup(layer.type);
-            } else if (layer.type == "MultiLineString") {
-                leaf_layer = L.geoJson(layer, {style: layer.style });
-                leaf_layer.bindPopup(layer.type);
-            } else  {
-                leaf_layer = L.geoJson(layer, {
-                    style: function(feature) {
-                        switch (feature.properties.style) {
-                        case 'Orange': return {color: "#ff0000"};
-                        case 'Blue': return {color: "#0000ff"};
-                    }
-                    },
-                    onEachFeature: function (feature, layer) {
-                         layer.bindPopup(feature.properties.name);
-                     }
-                 });
-            }
-            leaf_layer.addTo(map);
-
-            $('#' + name).click(function(e) {
-
-                if (map.hasLayer(leaf_layer)) {
-                    map.removeLayer(leaf_layer);
-                } else {
-                    map.addLayer(leaf_layer);
-                }
-            });
-        }
-        */

@@ -1,4 +1,4 @@
-- tiles not loading  OK 
+- Tiles not loading  OK 
 - adding buttons to edit the map ==> editing the map adds stuff on it, OK 
 - get properties from polygons that are drawns ==> OK 
 - request adding name to polygon after being added ==> 
@@ -19,7 +19,7 @@
     = Space /5
     = Crowd on weekend /5
     = Safe /5
-    Amenities : 
+  Amenities : 
     = Wifi available yes/no
     = Kids Playground
     = Skatepark
