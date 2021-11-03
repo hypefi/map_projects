@@ -11,7 +11,7 @@ var leaf_layer;
 console.log(layer);
 leaf_layer = L.geoJson(layer, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h1>'+feature.properties.name+'</h1>'+'<button>'+'update'+'</button>'+'<button>'+'save'+'</button>' );
+layer.bindPopup('<ul id="myList"><li id="name">'+feature.properties.name+'</li><li>Shade</li><li>Greenery</li></ul>'+'<button onClick="updatefields()">'+'update'+'</button>'+'<button>'+'save'+'</button>' );
         layer.on({click: layerClickHandler, mouseover: mouseoverfunction});
       }
     });
@@ -42,5 +42,22 @@ function layerClickHandler (e) {
 }
 
 function mouseoverfunction(){
+}
+
+// function to update fields in the layer pop up after clicking update button 
+function updatefields(properties) {
+// Create a new text node called "Input field with our value"
+var input = document.createElement("input");
+input.type = "my value";
+input.value = properties.name;
+  //input.className = "css-class-name"; // set the CSS class
+  //container.appendChild(input);
+
+// Get the child node of an <ul> element
+var item = document.getElementById("myList").childNodes[0];
+
+// Replace the first child node of <ul> with the newly created text node
+item.replaceChild(input, item.childNodes[0]);
+
 }
 

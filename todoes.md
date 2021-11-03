@@ -6,7 +6,9 @@
 - adding database to store the editing ==> we shall send only the last layer polygon to the database ? or send all layers ? or only layers edited  by user. ==> OK 
 - getting back park layers from database ==> OK 
 - populating data about the Park ==> OK 
-- Possibility to update data from the map of every Park
+- Possibility to update data from the map of every Park ===>  this sohuld be a form ==>  http://132.72.155.230:3838/js/collaborative-mapping.html#submission-form
+-
+-
 - adding data on layer creation, open popup after layer creation.
 - Custom style Popup ()
 - Adding Login for possibility of adding data on map
