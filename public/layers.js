@@ -11,7 +11,7 @@ var leaf_layer;
 console.log(layer);
 leaf_layer = L.geoJson(layer, {
       onEachFeature: function (feature, layer) {
-layer.bindPopup('<ul id="myList"><li id="name">'+feature.properties.name+'</li><li>Shade</li><li>Greenery</li></ul>'+'<button onClick="updatefields()">'+'update'+'</button>'+'<button>'+'save'+'</button>' );
+layer.bindPopup('<ul id="myList"><li id="name">'+feature.properties.name+'</li><li>Shade</li><li>Greenery</li></ul>'+'<button onClick="updatefields()">'+'update'+'</button>'+'<button>'+'save'+'</button>', {removable: true, editable: true} );
         layer.on({click: layerClickHandler, mouseover: mouseoverfunction});
       }
     });
