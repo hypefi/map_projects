@@ -23,40 +23,6 @@ app.use('/', indexRouter);
 
 
 
-/*
-app.use(function(req, res, next){
-next(createError(404));
-});
-
-//error handler
-//
-//
-app.use(function(err, req, res, next){
-//set locals, only providing error in development environment
-//
-res.locals.message = err.message;
-res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-// render the error page 
-res.status(err.status || 500);
-res.render('error'); //uncomment if you use a view engine 
-
-});
-
-
-app.post('/geojson', (req, res) => {
-  // you have address available in req.body:
-  console.log(req.body);
-  console.log(req.body.geometry.coordinates);
-  //send to DB 
-  //
-  //
-  
-
-  // always send a response:
-  res.json({ ok: true });
-});
-*/
 app.use(express.static(dir));
 
 

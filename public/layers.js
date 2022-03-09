@@ -1,37 +1,10 @@
-var popupContent = '<form role="form" id="form" enctype="multipart/form-data" class = "form-horizontal" onsubmit="addMarker()">'+
-          '<div class="form-group">'+
-              '<label class="control-label col-sm-5"><strong>Date: </strong></label>'+
-              '<input type="date" placeholder="Required" id="date" name="date" class="form-control"/>'+ 
-          '</div>'+
-          '<div class="form-group">'+
-              '<label class="control-label col-sm-5"><strong>Gender: </strong></label>'+
-              '<select class="form-control" id="gender" name="gender">'+
-                '<option value="Male">Male</option>'+
-                '<option value="Female">Female</option>'+
-                '<option value="Other">Other</option>'+
-              '</select>'+ 
-          '</div>'+
-          '<div class="form-group">'+
-              '<label class="control-label col-sm-5"><strong>Age: </strong></label>'+
-              '<input type="number" min="0" class="form-control" id="age" name="age">'+ 
-          '</div>'+
-          '<div class="form-group">'+
-              '<label class="control-label col-sm-5"><strong>Description: </strong></label>'+
-              '<textarea class="form-control" rows="6" id="descrip" name="descript">...</textarea>'+
-          '</div>'+
-          '<input style="display: none;" type="text" id="lat" name="lat" value="'+'" />'+
-          '<input style="display: none;" type="text" id="lng" name="lng" value="'+'" />'+
-          '<div class="form-group">'+
-            '<div style="text-align:center;" class="col-xs-4 col-xs-offset-2"><button type="button" class="btn">Cancel</button></div>'+
-            '<div style="text-align:center;" class="col-xs-4"><button type="submit" value="submit" class="btn btn-primary trigger-submit">Submit</button></div>'+
-          '</div>'+
-          '</form>';
+var popupContent = '<form action="" > Park Name: <input placeholder="Park Name" type="text" name="parkname" maxlength="24" size="24"/> <br/><br/>Rating:<br/> Wifi available:<input type="checkbox" name="gender" value="Wifi"/><br/> Availability of shade:<input type="checkbox" name="shade" value="Shade"/><br/><br/> :<br/> Skatepark:<input type="checkbox" name="skatepark" value="Skatepark"/><br/> Camping:<input type="checkbox" name="food[]" value="Pizza"/><br/> Chicken:<input type="checkbox" name="food[]" value="Chicken"/><br/><br/> <textarea wrap="physical" cols="20" name="quote" rows="5" placeholder="message"></textarea><br/><br> Select a Level of Education:<br/> <select name="education"> <option value="Jr.High">Jr.High</option> <option value="HighSchool">HighSchool</option> <option value="College">College</option></select><br/><p><input type="submit" /></p></form><pre id="result"></pre>';
 
 
 
 $.getJSON('/maplay',function(result){
     $.each(result, function(i, mlayer){
-        console.log("mlayer", mlayer);
+        // console.log("mlayer", mlayer);
         addLayer(mlayer);
         //populate layer with properties Data
    });
@@ -39,13 +12,35 @@ $.getJSON('/maplay',function(result){
 
 function addLayer(layer){
 var leaf_layer;
-console.log(layer);
+// console.log(layer);
 leaf_layer = L.geoJson(layer, {
       onEachFeature: function (feature, layer) {
 // layer.bindPopup('<ul id="myList"><li id="name">'+feature.properties.name+'</li><li>Shade</li><li>Greenery</li></ul>'+'<button onClick="updatefields()">'+'update'+'</button>'+'<button>'+'save'+'</button>', {removable: true, editable: true} );
+layer.bindPopup(popupContent);
+$.fn.serializeObject = function(){
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+ 
+    $('form').submit(function() {
+  console.log("here");
+  console.log(JSON.stringify($('form').serializeObject()));
+        $('#result').text(JSON.stringify($('form').serializeObject()));
+        return false;
+    });
 
- layer.bindPopup(popupContent,  {removable: true, editable: true} );
-        layer.on({click: layerClickHandler, mouseover: mouseoverfunction});
+layer.on({click: layerClickHandler, mouseover: mouseoverfunction});
       }
     });
 
@@ -64,7 +59,7 @@ function layerClickHandler (e) {
   console.log(e);
   var marker = e.target,
       properties = e.target.feature.properties;
-  marker.openPopup();
+      marker.openPopup();
 //  if (marker.hasOwnProperty('_popup')) {
 //   marker.unbindPopup();
 //  marker.closePopup();
